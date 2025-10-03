@@ -1,8 +1,9 @@
 import { useLocation } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 import Navigation from "@/components/Navigation";
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { DollarSign, TrendingUp, Target, Wallet, CheckCircle, AlertTriangle } from "lucide-react";
 
 export default function BudgetDashboard() {
@@ -31,6 +32,9 @@ export default function BudgetDashboard() {
   const monthlySavingsNeeded = savingsGoal.target / savingsGoal.months;
   const currentSavings = 0; // Starting point
 
+  // Calculate savings progress percentage
+  const savingsProgressPercentage = (currentSavings / savingsGoal.target) * 100;
+
   // Expense breakdown data for pie chart
   const expenseData = [
     { name: 'Rent', value: expenses.rent, color: '#10b981' },
@@ -41,13 +45,6 @@ export default function BudgetDashboard() {
     { name: 'Dining/Entertainment', value: expenses.dining, color: '#14b8a6' },
     { name: 'Personal Items', value: expenses.personal, color: '#f97316' },
   ].filter(item => item.value > 0);
-
-  // Savings progress data for bar chart
-  const savingsProgressData = [
-    { name: 'Current', amount: currentSavings },
-    { name: 'Monthly Target', amount: monthlySavingsNeeded },
-    { name: 'Goal', amount: savingsGoal.target },
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -138,20 +135,21 @@ export default function BudgetDashboard() {
               <CardHeader>
                 <CardTitle>Savings Progress</CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="h-[300px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={savingsProgressData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip formatter={(value) => `$${value}`} />
-                      <Bar dataKey="amount" fill="hsl(var(--primary))" />
-                    </BarChart>
-                  </ResponsiveContainer>
+              <CardContent className="space-y-6">
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium">Current Progress</span>
+                    <span className="text-sm font-medium" data-testid="text-progress-percentage">{savingsProgressPercentage.toFixed(0)}%</span>
+                  </div>
+                  <Progress value={savingsProgressPercentage} className="h-4" data-testid="progress-savings" />
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>${currentSavings.toLocaleString()} saved</span>
+                    <span>${savingsGoal.target.toLocaleString()} goal</span>
+                  </div>
                 </div>
-                <div className="mt-4 text-sm text-muted-foreground">
-                  <p>Monthly savings needed: ${monthlySavingsNeeded.toFixed(2)}</p>
+
+                <div className="space-y-2 pt-4 border-t">
+                  <p className="text-sm text-muted-foreground">Monthly savings needed: ${monthlySavingsNeeded.toFixed(2)}</p>
                   <p className={`flex items-center gap-2 ${availableForSavings >= monthlySavingsNeeded ? "text-primary font-medium" : "text-destructive font-medium"}`}>
                     {availableForSavings >= monthlySavingsNeeded ? (
                       <>
