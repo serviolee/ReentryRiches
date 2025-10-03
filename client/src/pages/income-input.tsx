@@ -13,7 +13,7 @@ export default function IncomeInput() {
 
   const handleNext = () => {
     console.log('Next clicked with:', { income, frequency });
-    // TODO: Navigate to next step
+    setLocation('/expense-input');
   };
 
   return (
