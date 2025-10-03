@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import Navigation from "@/components/Navigation";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import { DollarSign, TrendingUp, Target, Wallet, CheckCircle, AlertTriangle } from "lucide-react";
+import { DollarSign, TrendingUp, Target, Wallet, CheckCircle, AlertTriangle, Users, Award, Sparkles } from "lucide-react";
 
 export default function BudgetDashboard() {
   const [, setLocation] = useLocation();
@@ -168,17 +168,51 @@ export default function BudgetDashboard() {
             </Card>
           </div>
 
-          {/* Action Button */}
-          <div className="flex justify-center">
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => setLocation('/')}
-              data-testid="button-back-home"
-            >
-              Back to Home
-            </Button>
-          </div>
+          {/* Call to Action Section */}
+          <Card className="border-primary/20" data-testid="card-signup-cta">
+            <CardContent className="p-8">
+              <div className="text-center space-y-6">
+                <div className="space-y-2">
+                  <h2 className="text-2xl lg:text-3xl font-bold">Ready to take control of your finances?</h2>
+                  <p className="text-muted-foreground">Join thousands rebuilding their financial future</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-6">
+                  <div className="space-y-2">
+                    <div className="flex justify-center">
+                      <Users className="h-8 w-8 text-primary" />
+                    </div>
+                    <div className="text-3xl font-bold" data-testid="text-stat-users">15,000+</div>
+                    <p className="text-sm text-muted-foreground" data-testid="text-stat-users-label">Active users</p>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex justify-center">
+                      <Award className="h-8 w-8 text-primary" />
+                    </div>
+                    <div className="text-3xl font-bold" data-testid="text-stat-success">87%</div>
+                    <p className="text-sm text-muted-foreground" data-testid="text-stat-success-label">Reach their savings goals</p>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex justify-center">
+                      <Sparkles className="h-8 w-8 text-primary" />
+                    </div>
+                    <div className="text-3xl font-bold" data-testid="text-stat-savings">$2.3M</div>
+                    <p className="text-sm text-muted-foreground" data-testid="text-stat-savings-label">Collectively saved</p>
+                  </div>
+                </div>
+
+                <Button
+                  size="lg"
+                  onClick={() => setLocation('/')}
+                  data-testid="button-signup-cta"
+                >
+                  Sign Up and Start Saving
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
     </div>
