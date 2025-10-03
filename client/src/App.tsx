@@ -7,6 +7,7 @@ import Home from "@/pages/home";
 import IncomeInput from "@/pages/income-input";
 import ExpenseInput from "@/pages/expense-input";
 import SavingsGoal from "@/pages/savings-goal";
+import BudgetDashboard from "@/pages/budget-dashboard";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -16,6 +17,7 @@ function Router() {
       <Route path="/income-input" component={IncomeInput} />
       <Route path="/expense-input" component={ExpenseInput} />
       <Route path="/savings-goal" component={SavingsGoal} />
+      <Route path="/budget-dashboard" component={BudgetDashboard} />
       <Route component={NotFound} />
     </Switch>
   );

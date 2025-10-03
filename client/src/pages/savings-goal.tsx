@@ -15,7 +15,7 @@ export default function SavingsGoal() {
 
   const handleCreatePlan = () => {
     console.log('Create plan clicked with:', { goalType, amount, months });
-    // TODO: Create budget and savings plan
+    setLocation('/budget-dashboard');
   };
 
   return (
