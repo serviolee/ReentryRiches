@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import Navigation from "@/components/Navigation";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import { DollarSign, TrendingUp, Target, Wallet, CheckCircle, AlertTriangle, Users, Award, Sparkles } from "lucide-react";
+import { DollarSign, TrendingUp, Target, Wallet, CheckCircle, AlertTriangle, Shield, PiggyBank, LineChart } from "lucide-react";
 
 export default function BudgetDashboard() {
   const [, setLocation] = useLocation();
@@ -180,26 +180,26 @@ export default function BudgetDashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-6">
                   <div className="space-y-2">
                     <div className="flex justify-center">
-                      <Users className="h-8 w-8 text-primary" />
+                      <Shield className="h-8 w-8 text-primary" />
                     </div>
-                    <div className="text-3xl font-bold" data-testid="text-stat-users">15,000+</div>
-                    <p className="text-sm text-muted-foreground" data-testid="text-stat-users-label">Active users</p>
+                    <div className="text-3xl font-bold" data-testid="text-stat-users">3-6 months</div>
+                    <p className="text-sm text-muted-foreground" data-testid="text-stat-users-label">Emergency fund covers unexpected expenses</p>
                   </div>
                   
                   <div className="space-y-2">
                     <div className="flex justify-center">
-                      <Award className="h-8 w-8 text-primary" />
+                      <PiggyBank className="h-8 w-8 text-primary" />
                     </div>
-                    <div className="text-3xl font-bold" data-testid="text-stat-success">87%</div>
-                    <p className="text-sm text-muted-foreground" data-testid="text-stat-success-label">Reach their savings goals</p>
+                    <div className="text-3xl font-bold" data-testid="text-stat-success">40%</div>
+                    <p className="text-sm text-muted-foreground" data-testid="text-stat-success-label">Faster debt payoff with a budget plan</p>
                   </div>
                   
                   <div className="space-y-2">
                     <div className="flex justify-center">
-                      <Sparkles className="h-8 w-8 text-primary" />
+                      <LineChart className="h-8 w-8 text-primary" />
                     </div>
-                    <div className="text-3xl font-bold" data-testid="text-stat-savings">$2.3M</div>
-                    <p className="text-sm text-muted-foreground" data-testid="text-stat-savings-label">Collectively saved</p>
+                    <div className="text-3xl font-bold" data-testid="text-stat-savings">2x more</div>
+                    <p className="text-sm text-muted-foreground" data-testid="text-stat-savings-label">Likely to achieve financial goals with tracking</p>
                   </div>
                 </div>
 
