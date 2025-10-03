@@ -31,12 +31,12 @@ export default function ExpenseInput() {
 
   const handleNext = () => {
     console.log('Next clicked with:', { bills, spending });
-    // TODO: Navigate to next step
+    setLocation('/savings-goal');
   };
 
   const handleSkip = () => {
     console.log('Skip and add later clicked');
-    // TODO: Navigate to next step
+    setLocation('/savings-goal');
   };
 
   return (
