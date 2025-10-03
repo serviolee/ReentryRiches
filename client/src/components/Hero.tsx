@@ -1,7 +1,10 @@
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Target, Award } from "lucide-react";
 
 export default function Hero() {
+  const [, setLocation] = useLocation();
+
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
@@ -37,7 +40,7 @@ export default function Hero() {
           size="lg"
           className="text-lg px-8 py-6 h-auto"
           data-testid="button-build-plan"
-          onClick={() => console.log('Build me a plan clicked')}
+          onClick={() => setLocation('/income-input')}
         >
           Build me a plan
         </Button>
